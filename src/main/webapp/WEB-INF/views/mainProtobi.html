@@ -5,18 +5,17 @@
     <title>Title</title>
 </head>
 
-<script src="./proper/xlsx.full.js"></script>
-<script src="./proper/FileSaver.js"></script>
-<script src="./source/jquery-3.3.1.js"></script>
-<script src="./source/popper.min.js"></script>
-<script src="./source/bootstrap.js"></script>
-<script src="./source/jquery.autocomplete.js?a=2"></script>
-<script src="./source/moment.js"></script>
-<script src="./source/jquery.cookie.js"></script>
-<script src="./source/project.excel.js?a=3"></script>
+<script src="../proper/xlsx.full.js"></script>
+<script src="../proper/FileSaver.js"></script>
+<script src="../source/jquery-3.3.1.js"></script>
+<script src="../source/popper.min.js"></script>
+<script src="../source/bootstrap.js"></script>
+<script src="../source/jquery.autocomplete.js?a=2"></script>
+<script src="../source/moment.js"></script>
+<script src="../source/jquery.cookie.js"></script>
+<script src="../source/project.excel.js?a=3"></script>
 <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
-<link rel="stylesheet" href="./source/bootstrap.css">
-
+<link rel="stylesheet" href="../source/bootstrap.css">
 
 <body>
 <header class="card" style="margin: 10px 40px 10px 40px;padding: 15px;background-color: #f6f3f6;box-shadow: 5px 5px 2px #eaeaea">
@@ -43,7 +42,7 @@
             </div>
         </div>
 
-        <div id="brand-select" class="btn-group " style="float: left;margin-left: 30px;display: none;">
+        <div id="brand-select" class="btn-group " style="float: left;margin-left: 30px;">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 选择客户
             </button>
@@ -340,6 +339,11 @@
                         <input id="brand-name" type="text" class="form-control"  placeholder="请输入免税店名" >
                     </div>
 
+                    <div class="form-group">
+                        <label for="brand-name" class="col-form-label">免税店名:</label>
+                        <input id="brand-name-add-dianshu" type="text" class="form-control"  placeholder="请输入免税店名" >
+                    </div>
+
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                         <label id="brand-name-check" class="custom-control-label" for="customCheck1">特殊返点类型的免税店</label>
@@ -365,13 +369,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="brand-name" class="col-form-label">免税店名:</label>
-                        <input id="brand-name-update" type="text" class="form-control"  placeholder="修改免税店名" >
-                    </div>
-
-                </form>
+                <div class="form-group">
+                    <label for="brand-name" class="col-form-label">免税店名:</label>
+                    <input id="brand-name-update" type="text" class="form-control"  placeholder="修改免税店名" >
+                </div>
+                <div class="form-group">
+                    <label for="brand-name" class="col-form-label">点数:</label>
+                    <input id="brand-name-update-dianshu" type="text" class="form-control"  placeholder="修改免税店名" >
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
@@ -688,7 +693,6 @@
         });
     }
 
-    //TODO
     //设置当前免税店的点数
     function setBrandFandian() {
 
@@ -1558,7 +1562,7 @@
             },
             workbook.Sheets.Sheet1['D'+(itemSumline+4+8)]={s:{border:borderStyle.leftBottomBold}};
         //  数据
-        zongjieFandianTotalZhFormula='TEXT('+('E'+(itemSumline+4+3))+'*'+('E'+(itemSumline+4+5))+'/'+('E'+(itemSumline+4+7))+',"¥  #,###")'
+        zongjieFandianTotalZhFormula='TEXT('+('E'+(itemSumline+4+6))+'/'+('E'+(itemSumline+4+7))+',"¥  #,###")'
         workbook.Sheets.Sheet1['E'+(itemSumline+4+8)]={
             v:'0',
             t:'n',
@@ -1752,7 +1756,7 @@
         workbook.Sheets.Sheet1['F'+(itemSumline+15+_zLength+1+1)]={
             v:0,
             t:'n',
-            f:('E'+(itemSumline+14+5)),
+            f:('E'+(itemSumline+4+5)),
             s:{
                 alignment:cellContentPosition.textCenter,
                 border:borderStyle.rightBold,
@@ -1792,7 +1796,7 @@
         workbook.Sheets.Sheet1['F'+(itemSumline+15+_zLength+1+1+1)]={
             v:0,
             t:'n',
-            f:excelCellEnglish[14]+(itemSumline+5+_zLength+1)+"*"+excelCellEnglish[14]+(itemSumline+5+_zLength+1+1),
+            f:'TEXT('+'F'+(itemSumline+15+_zLength+1)+"*"+'F'+(itemSumline+15+_zLength+1+1)+',"#,###")',
             s:{
                 alignment:cellContentPosition.textCenter,
                 border:borderStyle.rightBottomBold,
@@ -2158,6 +2162,14 @@
             fandianTotalHtml.html(Math.floor(fandianTotal*100)/100);
 
         }
+    }
+
+    //TODO 保存数据至Cookie
+    function saveCookieData() {
+
+
+
+
     }
 
     function upload(input) {

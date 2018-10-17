@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
-public class MainController implements ApplicationContextAware{
+public class MainController {
 
-    private static ApplicationContext applicationContext;
 
     @RequestMapping("main")
     public String main(){
@@ -85,8 +87,19 @@ public class MainController implements ApplicationContextAware{
 
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext=applicationContext;
+    @ResponseBody
+    @RequestMapping("saveCookie")
+    public String saveCookie(HttpSession session,@RequestBody String data){
+
+        String resultCode="0000";
+
+        if (data!=null){
+            SimpleDateFormat format=new SimpleDateFormat("YYYY-MM-DD");
+
+            session.setAttribute(format.format(new Date()),data);
+            session.setMaxInactiveInterval(60 * 60 * 24 * 2);//Time Out 2Days
+        }
+
+        return resultCode;
     }
 }

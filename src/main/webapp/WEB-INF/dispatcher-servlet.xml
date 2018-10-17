@@ -16,7 +16,7 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:viewClass="org.springframework.web.servlet.view.JstlView"
           p:prefix="/WEB-INF/views/"
-          p:suffix=".html"></bean>
+          p:suffix=".jsp"></bean>
 
     <!-- Jackson2설정 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
