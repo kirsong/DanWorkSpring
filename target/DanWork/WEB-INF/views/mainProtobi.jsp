@@ -21,111 +21,149 @@
 <link rel="stylesheet" href="./source/bootstrap.css">
 
 <body>
-<header class="card" style="margin: 10px 40px 10px 40px;padding: 15px;background-color: #f6f3f6;box-shadow: 5px 5px 2px #eaeaea">
-    <div style="margin-top: 10px;">
-        <div class="input-group mb-3" style="width: 40%;float: left">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">客户名</span>
-            </div>
-            <input id="user-name-input" type="text" class="form-control" placeholder="输入 客户名" aria-label="Username" aria-describedby="basic-addon1">
+<div style="width: 100%;background-color: white;position: fixed;top: 0px; z-index: 1;height: auto">
+    <header class="card" style="width: 90%;margin: 10px 40px 10px 40px;padding: 15px;background-color: #f6f3f6;box-shadow: 5px 5px 2px #eaeaea;">
 
-            <!--<button type="button" class="btn btn-primary" style="margin-left: 20px;width: 100px;">添加</button>-->
-        </div>
-
-        <!-- 上传文件 -->
-        <div style="float: left;display: none">
-            <div class="input-group mb-3">
+        <div style="margin-top: 10px;">
+            <div class="input-group mb-3" style="width: 40%;float: left">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    <span class="input-group-text" id="basic-addon1">客户名</span>
                 </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onchange="upload(this)">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
-            </div>
-        </div>
+                <input id="user-name-input" type="text" class="form-control" placeholder="输入 客户名" aria-label="Username" aria-describedby="basic-addon1">
 
-        <div id="brand-select" class="btn-group " style="float: left;margin-left: 30px;">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                选择客户
-            </button>
-            <div class="dropdown-menu " >
-                <a class="dropdown-item" href="#" onclick="javascript:$('.dropdown-toggle').html('Action')">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-        </div>
-
-    </div>
-
-    <!--<div style="margin-top: 10px;">-->
-    <!--<div class="input-group mb-3" style="width: 50%;">-->
-    <!--<div class="input-group-prepend">-->
-    <!--<span class="input-group-text" id="basic-addon2">免税店</span>-->
-    <!--</div>-->
-    <!--<input type="text" class="form-control" placeholder="输入 免税店" aria-label="Storename" aria-describedby="basic-addon2">-->
-
-    <!--<button type="button" class="btn btn-primary" style="margin-left: 20px;width: 100px;">添加</button>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <div class="container" style="padding: 0px;margin: 0px;">
-        <div class="row">
-            <!--<div class="col-3">-->
-            <!--<div class="input-group mb-3">-->
-            <!--<select class="custom-select" id="StoreGroupSelect">-->
-            <!--<option selected>选择免税店</option>-->
-            <!--</select>-->
-            <!--</div>-->
-            <!--</div>-->
-            <div class="col-2">
-                <input id="jine-input" type="text" class="form-control" placeholder="金额" aria-label="" aria-describedby="basic-addon2" >
-            </div>
-            <div class="col-2">
-                <input id="dianshu-input" type="text" class="form-control" placeholder="点数(%)" aria-label="" aria-describedby="basic-addon2" >
-            </div>
-            <div class="col-2 pinpa-input-div" style="display: none">
-                <input id="pinpai-input" type="text" class="form-control" placeholder="品牌" aria-label="" aria-describedby="basic-addon2">
+                <!--<button type="button" class="btn btn-primary" style="margin-left: 20px;width: 100px;">添加</button>-->
             </div>
 
-            <div class="col-2 zhuijiafandian-input-div" style="display: none">
+            <!-- 上传文件 -->
+            <div style="float: left;display: none">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon2">追加点数</span>
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                     </div>
-                    <input id="zhuijiafandian-input" type="text" class="form-control" placeholder="输入点数" aria-label="输入点数" aria-describedby="basic-addon2" value="0">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onchange="upload(this)">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-2">
-                <button type="button" class="btn btn-primary  btn-block" onclick="addItem()">添加一条商品</button>
+            <div id="brand-select" class="btn-group " style="float: left;margin-left: 30px;">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    选择客户
+                </button>
+                <div class="dropdown-menu " >
+                    <a class="dropdown-item" href="#" onclick="javascript:$('.dropdown-toggle').html('Action')">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
             </div>
 
-            <div class="col-2">
-                <button data-target="#fandianDialog" data-whatever="@mdo" data-toggle="modal" type="button" class="btn btn-info  btn-block" onclick="initFandinDialog()" >设置点数</button>
-            </div>
         </div>
 
-        <div class="row" style="margin-top: 10px;">
-            <div class="col-2">
-                <input id="excel-date-input" type="text" class="form-control" placeholder="日期" aria-label="" aria-describedby="basic-addon2">
+        <!--<div style="margin-top: 10px;">-->
+        <!--<div class="input-group mb-3" style="width: 50%;">-->
+        <!--<div class="input-group-prepend">-->
+        <!--<span class="input-group-text" id="basic-addon2">免税店</span>-->
+        <!--</div>-->
+        <!--<input type="text" class="form-control" placeholder="输入 免税店" aria-label="Storename" aria-describedby="basic-addon2">-->
+
+        <!--<button type="button" class="btn btn-primary" style="margin-left: 20px;width: 100px;">添加</button>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="container" style="padding: 0px;margin: 0px;">
+            <div class="row">
+                <!--<div class="col-3">-->
+                <!--<div class="input-group mb-3">-->
+                <!--<select class="custom-select" id="StoreGroupSelect">-->
+                <!--<option selected>选择免税店</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="col-2 pinpa-input-div" style="display: none">
+                    <input id="pinpai-input" type="text" class="form-control" placeholder="品牌" aria-label="" aria-describedby="basic-addon2">
+                </div>
+                <div class="col-2">
+                    <input id="jine-input" type="text" class="form-control" placeholder="金额" aria-label="" aria-describedby="basic-addon2" >
+                </div>
+                <div class="col-2">
+                    <input id="dianshu-input" type="text" class="form-control" placeholder="点数(%)" aria-label="" aria-describedby="basic-addon2" >
+                </div>
+
+                <div class="col-2 zhuijiafandian-input-div" style="display: none">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon2">追加点数</span>
+                        </div>
+                        <input id="zhuijiafandian-input" type="text" class="form-control" placeholder="输入点数" aria-label="输入点数" aria-describedby="basic-addon2" value="0">
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary  btn-block" onclick="addItem()">添加一条商品</button>
+                </div>
+
+                <div class="col-2">
+                    <button data-target="#fandianDialog" data-whatever="@mdo" data-toggle="modal" type="button" class="btn btn-info  btn-block" onclick="initFandinDialog()" >设置点数</button>
+                </div>
             </div>
-            <div class="col-2" style="display: none;">
-                <input id="excel-rate-dk" type="text" class="form-control" placeholder="汇率(美金兑韩元)" aria-label="" aria-describedby="basic-addon2" onkeyup="value=value.replace(/[^\d]/g,'')" value="0">
-            </div>
-            <div class="col-2" style="display: none;">
-                <input id="excel-rate-kz" type="text" class="form-control" placeholder="汇率(韩元兑人民币)" aria-label="" aria-describedby="basic-addon2" onkeyup="value=value.replace(/[^\d]/g,'')" value="0">
-            </div>
-            <div class="col-6">
-                <button type="button" class="btn btn-success btn-lg btn-block" onclick="downExcel($('#user-name-input').val(),$('#excel-date-input').val())">生成Excel</button>
-            </div>
-            <div class="col-2" >
-                <button type="button" class="btn btn-info btn-lg btn-block" onclick="downLogText()">下载Log</button>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-2">
+                    <input id="excel-date-input" type="text" class="form-control" placeholder="日期" aria-label="" aria-describedby="basic-addon2">
+                </div>
+                <div class="col-2" style="display: none;">
+                    <input id="excel-rate-dk" type="text" class="form-control" placeholder="汇率(美金兑韩元)" aria-label="" aria-describedby="basic-addon2" onkeyup="value=value.replace(/[^\d]/g,'')" value="0">
+                </div>
+                <div class="col-2" style="display: none;">
+                    <input id="excel-rate-kz" type="text" class="form-control" placeholder="汇率(韩元兑人民币)" aria-label="" aria-describedby="basic-addon2" onkeyup="value=value.replace(/[^\d]/g,'')" value="0">
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="downExcel($('#user-name-input').val(),$('#excel-date-input').val())">生成Excel</button>
+                </div>
+                <div class="col-2" >
+                    <button type="button" class="btn btn-info btn-lg btn-block" onclick="downLogText()">下载Log</button>
+                </div>
             </div>
         </div>
+    </header>
+
+    <div style="margin: 0px 40px 0px 40px;height: auto">
+        <div>
+            <button data-target="#brandModalUpdate" data-whatever="@mdo" data-toggle="modal" type="button" class="btn btn-warning" style="position: absolute;right: 133px;" onclick="openBrandUpdateModal()">修改当前免税店</button>
+            <button data-target="#brandModal" data-whatever="@mdo" data-toggle="modal" type="button" class="btn btn-info" style="position: absolute;right: 30px;width: 100px" onclick="oepnAddBrand()">添加免税店</button>
+        </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist" style="overflow: auto">
+            <li class="nav-item nave-li-1" >
+                <a class="nav-link active" id="nave-tab-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="home" aria-selected="true" style="float: left">1</a>
+            </li>
+            <li class="nav-item nave-li-2" >
+                <a class="nav-link " id="nave-tab-2" data-toggle="tab" href="#tab2" role="tab" aria-controls="profile" aria-selected="false">2</a>
+            </li>
+            <li class="nav-item nave-li-3">
+                <a class="nav-link " id="nave-tab-3" data-toggle="tab" href="#tab3" role="tab" aria-controls="profile" aria-selected="false">3</a>
+            </li>
+            <li class="nav-item nave-li-4">
+                <a class="nav-link " id="nave-tab-4" data-toggle="tab" href="#tab4" role="tab" aria-controls="profile" aria-selected="false">4</a>
+            </li>
+            <li class="nav-item nave-li-6">
+                <a class="nav-link " id="nave-tab-6" data-toggle="tab" href="#tab6" role="tab" aria-controls="profile" aria-selected="false">5</a>
+            </li>
+            <li class="nav-item nave-li-7">
+                <a class="nav-link " id="nave-tab-7" data-toggle="tab" href="#tab7" role="tab" aria-controls="profile" aria-selected="false">6</a>
+            </li>
+            <li class="nav-item nave-li-8">
+                <a class="nav-link " id="nave-tab-8" data-toggle="tab" href="#tab8" role="tab" aria-controls="profile" aria-selected="false">7</a>
+            </li>
+            <li class="nav-item nave-li-5" teshu="true">
+                <a class="nav-link " id="nave-tab-5" data-toggle="tab" href="#tab5" role="tab" aria-controls="profile" aria-selected="false">特殊返点</a>
+            </li>
+        </ul>
+
     </div>
-</header>
+</div>
 
 <!-- 添加免税店的方法
     nav-link的id
@@ -134,38 +172,10 @@
 
     特殊返点属性值 teshu="true"
  -->
-<main style="overflow: auto;margin: 10px 40px 10px 40px;padding: 15px;">
-    <div>
-        <button data-target="#brandModalUpdate" data-whatever="@mdo" data-toggle="modal" type="button" class="btn btn-warning" style="position: absolute;right: 133px;" onclick="openBrandUpdateModal()">修改当前免税店</button>
-        <button data-target="#brandModal" data-whatever="@mdo" data-toggle="modal" type="button" class="btn btn-info" style="position: absolute;right: 30px;width: 100px">添加免税店</button>
-    </div>
+<div style="width: 100%;height: 250px;"></div>
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist" style="overflow: auto">
-        <li class="nav-item nave-li-1" >
-            <a class="nav-link active" id="nave-tab-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="home" aria-selected="true" style="float: left">1</a>
-        </li>
-        <li class="nav-item nave-li-2" >
-            <a class="nav-link " id="nave-tab-2" data-toggle="tab" href="#tab2" role="tab" aria-controls="profile" aria-selected="false">2</a>
-        </li>
-        <li class="nav-item nave-li-3">
-            <a class="nav-link " id="nave-tab-3" data-toggle="tab" href="#tab3" role="tab" aria-controls="profile" aria-selected="false">3</a>
-        </li>
-        <li class="nav-item nave-li-4">
-            <a class="nav-link " id="nave-tab-4" data-toggle="tab" href="#tab4" role="tab" aria-controls="profile" aria-selected="false">4</a>
-        </li>
-        <li class="nav-item nave-li-6">
-            <a class="nav-link " id="nave-tab-6" data-toggle="tab" href="#tab6" role="tab" aria-controls="profile" aria-selected="false">5</a>
-        </li>
-        <li class="nav-item nave-li-7">
-            <a class="nav-link " id="nave-tab-7" data-toggle="tab" href="#tab7" role="tab" aria-controls="profile" aria-selected="false">6</a>
-        </li>
-        <li class="nav-item nave-li-8">
-            <a class="nav-link " id="nave-tab-8" data-toggle="tab" href="#tab8" role="tab" aria-controls="profile" aria-selected="false">7</a>
-        </li>
-        <li class="nav-item nave-li-5" teshu="true">
-            <a class="nav-link " id="nave-tab-5" data-toggle="tab" href="#tab5" role="tab" aria-controls="profile" aria-selected="false">特殊返点</a>
-        </li>
-    </ul>
+<main style="margin: 0px 40px 10px 40px;padding: 0px 15px 15px 15px; z-index: 100;">
+
     <div class="tab-content " id="myTabContent" style="padding: 10px 30px 10px 30px;">
         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="nave-tab-1" style="padding-top: 10px;" name="1">
 
@@ -353,11 +363,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="brand-name" class="col-form-label">免税店名:</label>
+                        <label for="brand-name" class="col-form-label">点数:</label>
                         <input id="brand-name-add-dianshu" type="text" class="form-control"  placeholder="请输入免税店名" >
                     </div>
 
-                    <div class="custom-control custom-checkbox">
+                    <div class="custom-control custom-checkbox" style="display: none">
                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                         <label id="brand-name-check" class="custom-control-label" for="customCheck1">特殊返点类型的免税店</label>
                     </div>
@@ -427,6 +437,47 @@
     </div>
 </div>
 
+<!-- 修改数据 -->
+<div class="modal fade" id="modifyDialog" tabindex="-1" role="dialog" aria-labelledby="modifyDialogLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modifyDialogLabel">设置点数</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body " style="text-align: center">
+                <!-- TODO -->
+                <div class="row" style="text-align: center;margin: 0px;padding: 0px;">
+                    <div id="modify-pinpai-title-div" class="col-2" style="border: 1px solid lightgray;">品牌</div>
+                    <div id="modify-jine-title-div" class="col-4" style="border: 1px solid lightgray;">购买金额(美金)</div>
+                    <div id="modify-dianshu-title-div" class="col-2" style="border: 1px solid lightgray;">点数</div>
+                    <div id="modify-zhuijia-title-div" class="col-3" style="border: 1px solid lightgray;">追加点数</div>
+                </div>
+                <div class="row" style="text-align: center;margin: 0px;padding: 0px;">
+                    <div id="modify-pinpai-div" class="col-2" style="border: 1px solid #4c4c4c; padding: 0px;margin: 0px;text-align: center">
+                        <input type="text" class="form-control" style="border: 0px;outline:none;" placeholder="品牌" aria-label="" aria-describedby="basic-addon2" >
+                    </div>
+                    <div id="modify-jine-div" class="col-4" style="border: 1px solid #4c4c4c; padding: 0px;margin: 0px;text-align: center">
+                        <input type="text" class="form-control" placeholder="购买金额" aria-label="" aria-describedby="basic-addon2" >
+                    </div>
+                    <div id="modify-dianshu-div" class="col-2" style="border: 1px solid #4c4c4c; padding: 0px;margin: 0px;text-align: center">
+                        <input type="text" class="form-control" placeholder="点数" aria-label="" aria-describedby="basic-addon2" >
+                    </div>
+                    <div id="modify-zhuijia-div" class="col-3" style="border: 1px solid #4c4c4c; padding: 0px;margin: 0px;text-align: center">
+                        <input type="text" class="form-control" placeholder="追加点数" aria-label="" aria-describedby="basic-addon2" >
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="modifyItem()">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <table id="table-excel" style="display: none"></table>
 
 <style>
@@ -445,6 +496,10 @@
     var menu_tab_index=8;
     var navi_li_classname='nave-li-1';//免税店选择tab的Class命
     var fandianDatas;//反点数据
+
+    //修改数据用到
+    var tabIndex=0;//当前Tab索引
+    var modifyListIndex=-1;//当前修改数据中的Index
 
     function createBrand(brandName,isZhuiija) {
 
@@ -482,7 +537,9 @@
             "                </div>\n" +
             "            </div>";
 
-        $('.nave-li-5').before(menuLiHtml);
+        //TODO
+//        $('.nave-li-5').before(menuLiHtml);
+        $('.'+navi_li_classname).after(menuLiHtml);
 
 //        $("#myTab").append(menuLiHtml);
         $("#myTabContent").append(contentHtml);
@@ -511,6 +568,7 @@
     //初始化的值
     function initParam() {
         navi_li_classname='nave-li-1';
+        tabIndex=0;
 
     }
 
@@ -520,8 +578,22 @@
 
                 if ($(this).attr('class').split(" ")[i].indexOf('nave-li')>=0){
                     navi_li_classname=$(this).attr('class').split(" ")[i];
+                    break;
                 }
             }
+
+            //TODO
+
+            for (var i=0;i<$('#myTab').children().length;i++){
+
+                var el=$('#myTab').children()[i];
+                for(var j=0;j<$(el).attr('class').split(" ").length;j++){
+                    if ($(el).attr('class').split(" ")[j]==navi_li_classname){
+                        tabIndex=i;
+                    }
+                }
+            }
+
 
             setBrandFandian();
 
@@ -654,10 +726,16 @@
         $("#jine-input").val('');
         if ($($('#myTab li.nav-item a.active').parents()[0]).attr('teshu')){
             $("#pinpai-input").val('');
+            $("#zhuijiafandian-input").val('0');
         }
 
         reDrawItemHtml(tabIndex);
 
+    }
+
+    function oepnAddBrand() {
+        $('#brand-name').val('');
+        $('#brand-name-add-dianshu').val('');
     }
 
     function openBrandUpdateModal() {
@@ -880,7 +958,6 @@
         }
 
         totalData=reSortData(totalData);
-        console.log(JSON.stringify(totalData));
 
         //============= excel 工作中 ====================
         var sheetName=userName+"_"+moment().format('YYYY-MM-DD');
@@ -1011,10 +1088,10 @@
             //总结---结束
 
             //追加总结开始
-            {
-                s:{c:2,r:itemSumline+13},
-                e:{c:5,r:itemSumline+13}
-            },
+//            {
+//                s:{c:2,r:itemSumline+13},
+//                e:{c:5,r:itemSumline+13}
+//            },
         ];
 
         //免税店名合并
@@ -1208,6 +1285,9 @@
                 }
             }
 
+            var zhuijiaCellname=2;//特殊返点的字母地址.如果追加返点有数据的话需要把他放到特殊反点的下面.
+                                    //默认是C,如果没有数据时放到总结的下面
+
             for(var j=0;j<itemShijiLine;j++){
                 var _cellName=excelCellEnglish[data_col_index]+data_row_index;//坐标地址
 
@@ -1224,6 +1304,7 @@
 
                         //追加返点中有追加点数时保存
                         if (item.items[j].zhuijiadianshu>0){
+                            zhuijiaCellname=_col_index_1;
                             zhuijiaDianshu.push(item.items[j]);
                         }
 
@@ -1667,7 +1748,17 @@
         };
 
         //追加返点总结
-        workbook.Sheets.Sheet1['C'+(itemSumline+14)]={
+        var zhuijiaRowIndex=itemSumline+14;//追加的列Index,如果追加返点没有数据则放到总结的下面.
+        if (zhuijiaDianshu.length>0){
+            zhuijiaRowIndex=itemSumline+4;
+        }
+
+        merges.push({
+            s:{c:zhuijiaCellname,r:zhuijiaRowIndex-1},
+            e:{c:zhuijiaCellname+3,r:zhuijiaRowIndex-1}
+        })
+
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+zhuijiaRowIndex]={
             v:'追加返点(下次行程对金额一起结算)',
             t:'s',
             s:{
@@ -1682,11 +1773,11 @@
                 }
             }
         };
-        workbook.Sheets.Sheet1['D'+(itemSumline+14)]={s:{border:borderStyle.topLeftRightBold}};
-        workbook.Sheets.Sheet1['E'+(itemSumline+14)]={s:{border:borderStyle.topLeftRightBold}};
-        workbook.Sheets.Sheet1['F'+(itemSumline+14)]={s:{border:borderStyle.topLeftRightBold}};
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+zhuijiaRowIndex]={s:{border:borderStyle.topLeftRightBold}};
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+zhuijiaRowIndex]={s:{border:borderStyle.topLeftRightBold}};
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+zhuijiaRowIndex]={s:{border:borderStyle.topLeftRightBold}};
         //数据标题标签
-        workbook.Sheets.Sheet1['C'+(itemSumline+15)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+(zhuijiaRowIndex+1)]={
             v:'品牌',
             t:'s',
             s:{
@@ -1697,7 +1788,7 @@
                 },
             }
         };
-        workbook.Sheets.Sheet1['D'+(itemSumline+15)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+(zhuijiaRowIndex+1)]={
             v:'购买金额(美金)',
             t:'s',
             s:{
@@ -1708,7 +1799,7 @@
                 },
             }
         };
-        workbook.Sheets.Sheet1['E'+(itemSumline+15)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+(zhuijiaRowIndex+1)]={
             v:'追加点数',
             t:'s',
             s:{
@@ -1719,7 +1810,7 @@
                 },
             }
         };
-        workbook.Sheets.Sheet1['F'+(itemSumline+15)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+(zhuijiaRowIndex+1)]={
             v:'追加返点(美金)',
             t:'s',
             s:{
@@ -1733,9 +1824,8 @@
         //数据
         var _zLength=zhuijiaDianshu.length+4;
         var _zHejiFormula='';//追加返点合计公式
-        // TODO
         for (var i=1;i<=_zLength;i++){
-            var _row=itemSumline+15+i;
+            var _row=(zhuijiaRowIndex+1)+i;
 
             var name='',goumai=0,zhuijia=0;
 
@@ -1751,7 +1841,7 @@
                 zhuijia=_zItem.zhuijiadianshu+"%";
             }
 
-            workbook.Sheets.Sheet1['C'+_row]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+_row]={
                 v:name,
                 t:'s',
                 s:{
@@ -1759,7 +1849,7 @@
                     border:borderStyle.leftBold,
                 }
             };
-            workbook.Sheets.Sheet1['D'+_row]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+_row]={
                 v:goumai,
                 t:'n',
                 s:{
@@ -1767,7 +1857,7 @@
                     border:borderStyle.nomalLine,
                 }
             };
-            workbook.Sheets.Sheet1['E'+_row]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+_row]={
                 v:zhuijia,
                 t:'s',
                 s:{
@@ -1775,20 +1865,20 @@
                     border:borderStyle.nomalLine,
                 }
             };
-            workbook.Sheets.Sheet1['F'+_row]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+_row]={
                 v:'0',
                 t:'n',
-                f:('D'+_row)+'*'+('E'+_row),
+                f:(excelCellEnglish[zhuijiaCellname+1]+_row)+'*'+(excelCellEnglish[zhuijiaCellname+2]+_row),
                 s:{
                     alignment:cellContentPosition.textCenter,
                     border:borderStyle.rightBold,
                 }
             };
 
-            _zHejiFormula+='F'+_row+'+';
+            _zHejiFormula+=excelCellEnglish[zhuijiaCellname+3]+_row+'+';
         }
         //合计(美金)
-        workbook.Sheets.Sheet1['C'+(itemSumline+15+_zLength+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+(zhuijiaRowIndex+1+_zLength+1)]={
             v:'合计(美金)',
             t:'s',
             s:{
@@ -1796,7 +1886,7 @@
                 border:borderStyle.leftBold,
             }
         },
-            workbook.Sheets.Sheet1['D'+(itemSumline+15+_zLength+1)]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+(zhuijiaRowIndex+1+_zLength+1)]={
                 v:'',
                 t:'s',
                 s:{
@@ -1804,7 +1894,7 @@
                     border:borderStyle.nomalLine,
                 }
             };
-        workbook.Sheets.Sheet1['E'+(itemSumline+15+_zLength+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+(zhuijiaRowIndex+1+_zLength+1)]={
             v:'',
             t:'s',
             s:{
@@ -1814,7 +1904,7 @@
         };
 
         _zHejiFormula=_zHejiFormula.substr(0,_zHejiFormula.length-1);
-        workbook.Sheets.Sheet1['F'+(itemSumline+15+_zLength+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+(zhuijiaRowIndex+1+_zLength+1)]={
             v:'0',
             t:'n',
             f:_zHejiFormula,
@@ -1824,7 +1914,7 @@
             }
         };
         //韩币汇率
-        workbook.Sheets.Sheet1['C'+(itemSumline+15+_zLength+1+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+(zhuijiaRowIndex+1+_zLength+1+1)]={
             v:'韩币汇率',
             t:'s',
             s:{
@@ -1835,7 +1925,7 @@
                 }
             }
         },
-            workbook.Sheets.Sheet1['D'+(itemSumline+15+_zLength+1+1)]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+(zhuijiaRowIndex+1+_zLength+1+1)]={
                 v:'',
                 t:'s',
                 s:{
@@ -1846,7 +1936,7 @@
                     }
                 }
             };
-        workbook.Sheets.Sheet1['E'+(itemSumline+15+_zLength+1+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+(zhuijiaRowIndex+1+_zLength+1+1)]={
             v:'',
             t:'s',
             s:{
@@ -1857,7 +1947,7 @@
                 }
             }
         };
-        workbook.Sheets.Sheet1['F'+(itemSumline+15+_zLength+1+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+(zhuijiaRowIndex+1+_zLength+1+1)]={
             v:0,
             t:'n',
             f:('E'+(itemSumline+4+5)),
@@ -1871,7 +1961,7 @@
         };
 
         //合计(韩币)
-        workbook.Sheets.Sheet1['C'+(itemSumline+15+_zLength+1+1+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+(zhuijiaRowIndex+1+_zLength+1+1+1)]={
             v:'合计(韩币)',
             t:'s',
             s:{
@@ -1879,7 +1969,7 @@
                 border:borderStyle.leftBottomBold,
             }
         },
-            workbook.Sheets.Sheet1['D'+(itemSumline+15+_zLength+1+1+1)]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+(zhuijiaRowIndex+1+_zLength+1+1+1)]={
                 v:'',
                 t:'s',
                 s:{
@@ -1887,7 +1977,7 @@
                     border:borderStyle.bottomBold,
                 }
             },
-            workbook.Sheets.Sheet1['E'+(itemSumline+15+_zLength+1+1+1)]={
+            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+(zhuijiaRowIndex+1+_zLength+1+1+1)]={
                 v:'',
                 t:'s',
                 s:{
@@ -1897,10 +1987,10 @@
             };
 
 //        var _totalKo='SUM('+(excelCellEnglish[14]+itemSumline+5+1)+':'+(excelCellEnglish[14]+itemSumline+5+_zLength)+')';
-        workbook.Sheets.Sheet1['F'+(itemSumline+15+_zLength+1+1+1)]={
+        workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+(zhuijiaRowIndex+1+_zLength+1+1+1)]={
             v:0,
             t:'n',
-            f:'TEXT('+'F'+(itemSumline+15+_zLength+1)+"*"+'F'+(itemSumline+15+_zLength+1+1)+',"#,###")',
+            f:'TEXT('+excelCellEnglish[zhuijiaCellname+3]+(zhuijiaRowIndex+1+_zLength+1)+"*"+excelCellEnglish[zhuijiaCellname+3]+(zhuijiaRowIndex+1+_zLength+1+1)+',"#,###")',
             s:{
                 alignment:cellContentPosition.textCenter,
                 border:borderStyle.rightBottomBold,
@@ -1913,9 +2003,7 @@
             rowsHeight.push(25);
         }
 
-        workbook.Sheets.Sheet1['F'+(itemSumline+4+8)]={s:{border:borderStyle.rightBottomBold}},
-
-            console.log(JSON.stringify(workbook));
+        workbook.Sheets.Sheet1['F'+(itemSumline+4+8)]={s:{border:borderStyle.rightBottomBold}};
 
         var workData=JSON.parse(JSON.stringify(workbook).replace(/Sheet1/g,sheetName));
         var wopts = { bookType:'xlsx', bookSST:false, type:'binary' };
@@ -1950,11 +2038,71 @@
         totalData[totalIndex].items.remove(itemData);
     }
 
-    function removeItem2(itemIndex,totalIndex){
+    function removeItem2(itemIndex){
 
-        totalData[totalIndex].items.splice(itemIndex,1);
+        var dataIndex=getCurrentDataIndex();
 
-        reDrawItemHtml(totalIndex);
+        totalData[dataIndex].items.splice(itemIndex,1);
+
+        reDrawItemHtml(dataIndex);
+    }
+
+    function openModifyItem(itemIndex) {
+
+        var dataIndex=getCurrentDataIndex();
+
+        var _item=totalData[dataIndex].items[itemIndex];
+        modifyListIndex=itemIndex;
+
+        $('#modify-jine-div input').val(_item.jine);
+        $('#modify-dianshu-div input').val(_item.dianshu)
+        $('#modify-pinpai-div input').val(_item.pinpai);
+        $('#modify-zhuijia-div input').val(_item.zhuijiadianshu)
+
+        //特殊追加
+        if(totalData[dataIndex].teshu){
+            $('#modify-pinpai-title-div').css('display','inline')
+            $('#modify-zhuijia-title-div').css('display','inline')
+            $('#modify-pinpai-div').css('display','inline')
+            $('#modify-zhuijia-div').css('display','inline')
+        }else{
+            $('#modify-pinpai-title-div').css('display','none')
+            $('#modify-zhuijia-title-div').css('display','none')
+            $('#modify-pinpai-div').css('display','none')
+            $('#modify-zhuijia-div').css('display','none')
+        }
+
+    }
+
+    //修改数据
+    function modifyItem() {
+
+        for (var i=0;i<totalData.length;i++){
+
+            if ($('.'+navi_li_classname).children('a').html()==totalData[i].brandName){
+                totalData[i].items[modifyListIndex]={
+                    jine:$('#modify-jine-div input').val(),
+                    dianshu:$('#modify-dianshu-div input').val(),
+                    fandian:Math.round(($('#modify-jine-div input').val() * ($('#modify-dianshu-div input').val()/100))*100)/100,
+                    pinpai:$('#modify-pinpai-div input').val(),
+                    zhuijiadianshu:$('#modify-zhuijia-div input').val()
+                };
+
+                reDrawItemHtml(i);
+                break;
+            }
+        }
+    }
+
+    //현재 브랜드 탭이 데이터에서의 인덱스 위치를 반환한다
+    function getCurrentDataIndex() {
+
+        for (var i=0;i<totalData.length;i++){
+            if ($('.'+navi_li_classname).children('a').html()==totalData[i].brandName){
+                return i;
+            }
+        }
+
     }
 
     //重新绘制
@@ -2006,22 +2154,24 @@
                     dianshuEl=itemData.dianshu+'%';
                 }
 
-                itemHtml="<div class=\"row\" style=\"text-align: center\">\n" +
+                itemHtml="<div class=\"row\" style=\"text-align: center;line-height: 40px;\">\n" +
                     "                        <div class=\"col-1\" style=\"border: 1px solid #4c4c4c;color:"+textColor+"background-color:"+bgColor+"\">"+(tableHtml.children().length+1)+"</div>\n" +
                     "                        <div class=\"col-2\" style=\"border: 1px solid #4c4c4c;color: "+textColor+";background-color:"+bgColor+"\">"+itemData.pinpai+"</div>\n" +
                     "                        <div class=\"col-2\" style=\"border: 1px solid #4c4c4c;color: "+textColor+";background-color:"+bgColor+"\">"+itemData.jine+"</div>\n" +
                     "                        <div class=\"col-2\" style=\"border: 1px solid #4c4c4c;color: "+textColor+";background-color:"+bgColor+"\">"+dianshuEl+"</div>\n" +
                     "                        <div class=\"col-2\" style=\"border: 1px solid #4c4c4c;color: "+textColor+";background-color:"+bgColor+"\">"+itemData.fandian+"</div>\n" +
                     "                        <div class=\"col-2\" style=\"border: 1px solid #4c4c4c;color: "+textColor+";background-color:"+bgColor+"\">"+itemData.zhuijiadianshu+"%</div>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"removeItem2("+i+","+totalIndex+")\">删除</button>"+
+                    "<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"removeItem2("+i+")\" style='margin: 3px;padding-left: 5px;padding-right: 5px'>删除</button>"+
+                    "<button data-target=\"#modifyDialog\" data-whatever=\"@mdo\" data-toggle=\"modal\" type=\"button\" class=\"btn btn-info btn-sm\" onclick=\"openModifyItem("+i+")\" style='margin: 3px;padding-left: 5px;padding-right: 5px'>修改</button>"+
                     "                    </div>";
             }else{
-                itemHtml="<div class=\"row\" style=\"text-align: center\">\n" +
+                itemHtml="<div class=\"row\" style=\"text-align: center;line-height: 40px;\">\n" +
                     "                        <div class=\"col-1\" style=\"border: 1px solid #4c4c4c;color: "+textColor+"; background-color:"+bgColor+"\">"+(tableHtml.children().length+1)+"</div>\n" +
                     "                        <div class=\"col-3\" style=\"border: 1px solid #4c4c4c;color: "+textColor+";background-color:"+bgColor+"\">"+itemData.jine+"</div>\n" +
                     "                        <div class=\"col-3\" style=\"border: 1px solid #4c4c4c;width: 30%;color:"+textColor+";background-color:"+bgColor+"\">"+itemData.dianshu+"%</div>\n" +
                     "                        <div class=\"col-3\" style=\"border: 1px solid #4c4c4c;width: 30%;color:"+textColor+";background-color:"+bgColor+"\">"+itemData.fandian+"</div>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"removeItem2("+i+","+totalIndex+")\">删除</button>"+
+                    "<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"removeItem2("+i+")\" style='margin: 3px;padding-left: 5px;padding-right: 5px'>删除</button>"+
+                    "<button data-target=\"#modifyDialog\" data-whatever=\"@mdo\" data-toggle=\"modal\" type=\"button\" class=\"btn btn-info btn-sm\" onclick=\"openModifyItem("+i+")\" style='margin: 3px;padding-left: 5px;padding-right: 5px'>修改</button>"+
                     "                    </div>";
             }
 
@@ -2269,7 +2419,7 @@
         }
     }
 
-    //TODO 保存数据至Cookie
+    // 保存数据至Cookie
     function saveCookieData() {
 
         var userName=$("#user-name-input").val();
@@ -2307,7 +2457,6 @@
             filename = file.name.split(".")[0];
             var reader = new FileReader();
             reader.onload = function() {
-                console.log(this.result)
                 alert(this.result);
             }
             reader.readAsText(file);
