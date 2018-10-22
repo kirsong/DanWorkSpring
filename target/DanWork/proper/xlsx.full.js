@@ -18024,7 +18024,7 @@ var XLSX = {};
                     o.t = "s";
                     break
                 }
-                o.t = "str";
+                o.t = "str";//TODO
                 break;
             case "n":
                 break;

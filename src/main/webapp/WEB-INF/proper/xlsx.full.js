@@ -17238,7 +17238,6 @@ var XLSX = {};
                 r: ref
 
             };
-        //TODO
         if (cell.f !== undefined){
             var v = cell.f ? writetag('f', escapexml(cell.f)) : writetag('v', escapexml(vv));
         }
@@ -17264,7 +17263,7 @@ var XLSX = {};
                     o.t = "s";
                     break
                 }
-                o.t = "str";
+                o.t = "str";//TODO
                 break
         }
         if (cell.t != oldt) {
@@ -18024,7 +18023,7 @@ var XLSX = {};
                     o.t = "s";
                     break
                 }
-                o.t = "str";
+                o.t = "str";//TODO
                 break;
             case "n":
                 break;

@@ -8,7 +8,7 @@
     <title>Title</title>
 </head>
 
-<script src="./proper/xlsx.full.js"></script>
+<script src="./proper/xlsx.full.js?a=6"></script>
 <script src="./proper/FileSaver.js"></script>
 <script src="./source/jquery-3.3.1.js"></script>
 <script src="./source/popper.min.js"></script>
@@ -174,7 +174,7 @@
  -->
 <div style="width: 100%;height: 250px;"></div>
 
-<main style="margin: 0px 40px 10px 40px;padding: 0px 15px 15px 15px; z-index: 100;">
+<main style="margin: 15px 40px 10px 40px;padding: 0px 15px 15px 15px; z-index: 100;">
 
     <div class="tab-content " id="myTabContent" style="padding: 10px 30px 10px 30px;">
         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="nave-tab-1" style="padding-top: 10px;" name="1">
@@ -448,7 +448,6 @@
                 </button>
             </div>
             <div class="modal-body " style="text-align: center">
-                <!-- TODO -->
                 <div class="row" style="text-align: center;margin: 0px;padding: 0px;">
                     <div id="modify-pinpai-title-div" class="col-2" style="border: 1px solid lightgray;">品牌</div>
                     <div id="modify-jine-title-div" class="col-4" style="border: 1px solid lightgray;">购买金额(美金)</div>
@@ -537,7 +536,6 @@
             "                </div>\n" +
             "            </div>";
 
-        //TODO
 //        $('.nave-li-5').before(menuLiHtml);
         $('.'+navi_li_classname).after(menuLiHtml);
 
@@ -581,8 +579,6 @@
                     break;
                 }
             }
-
-            //TODO
 
             for (var i=0;i<$('#myTab').children().length;i++){
 
@@ -1337,11 +1333,19 @@
                         s:_jineStyle
                     };
 
-                    var dianshuPa=totalData[i].items[j].dianshu+"%";
+                    var dianshuPa=totalData[i].items[j].dianshu ;//+"%";
+
+                    var dianshuFormula;
+                    if (dianshuPa.indexOf('.')>0){
+                        dianshuFormula='TEXT('+(dianshuPa/ 100)+',"#.###%")';
+                    }else{
+                        dianshuFormula='TEXT('+(dianshuPa/ 100)+',"#%")';
+                    }
                     //特殊反点,并且金额没写或者0的时候那么点数就不需要加 '%'了
                     if (isTeshu){
                         if (totalData[i].items[j].jine==0){
                             dianshuPa=totalData[i].items[j].dianshu;
+                            dianshuFormula=''
                         }
                     }
 
@@ -1349,7 +1353,8 @@
                     _cellName=excelCellEnglish[_col_index_3]+data_row_index;
                     workbook.Sheets.Sheet1[_cellName]={
                         v:dianshuPa,
-                        t:'s',
+                        t:'n',//TODO,
+                        f:dianshuFormula,
                         s:excelStyle.dataItemCell
                     };
                     //返点
@@ -1827,7 +1832,7 @@
         for (var i=1;i<=_zLength;i++){
             var _row=(zhuijiaRowIndex+1)+i;
 
-            var name='',goumai=0,zhuijia=0;
+            var name='',goumai=0,zhuijia=0,zhuijiaFormula='TEXT()';
 
             if (zhuijiaDianshu.length>(i-1)){
                 var _zItem=zhuijiaDianshu[i-1];
@@ -1839,41 +1844,80 @@
                     goumai=_zItem.jine
                 }
                 zhuijia=_zItem.zhuijiadianshu+"%";
-            }
+                if(_zItem.zhuijiadianshu.indexOf('.')>0){
+                    zhuijiaFormula='TEXT('+(_zItem.zhuijiadianshu/100)+',"#.###%")';
+                }else{
+                    zhuijiaFormula='TEXT('+(_zItem.zhuijiadianshu/100)+',"#%")';
+                }
 
-            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+_row]={
-                v:name,
-                t:'s',
-                s:{
-                    alignment:cellContentPosition.textCenter,
-                    border:borderStyle.leftBold,
-                }
-            };
-            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+_row]={
-                v:goumai,
-                t:'n',
-                s:{
-                    alignment:cellContentPosition.textCenter,
-                    border:borderStyle.nomalLine,
-                }
-            };
-            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+_row]={
-                v:zhuijia,
-                t:'s',
-                s:{
-                    alignment:cellContentPosition.textCenter,
-                    border:borderStyle.nomalLine,
-                }
-            };
-            workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+_row]={
-                v:'0',
-                t:'n',
-                f:(excelCellEnglish[zhuijiaCellname+1]+_row)+'*'+(excelCellEnglish[zhuijiaCellname+2]+_row),
-                s:{
-                    alignment:cellContentPosition.textCenter,
-                    border:borderStyle.rightBold,
-                }
-            };
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+_row]={
+                    v:name,
+                    t:'s',
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.leftBold,
+                    }
+                };
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+_row]={
+                    v:goumai,
+                    t:'n',
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.nomalLine,
+                    }
+                };
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+_row]={
+                    v:'0',
+                    t:'n',
+                    f:zhuijiaFormula,
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.nomalLine,
+                    }
+                };
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+_row]={
+                    v:'0',
+                    t:'n',
+                    f:(excelCellEnglish[zhuijiaCellname+1]+_row)+'*'+(excelCellEnglish[zhuijiaCellname+2]+_row),
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.rightBold,
+                    }
+                };
+            }else{//没数据的时候设置空
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname]+_row]={
+                    v:name,
+                    t:'s',
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.leftBold,
+                    }
+                };
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+1]+_row]={
+                    v:'',
+                    t:'s',
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.nomalLine,
+                    }
+                };
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+2]+_row]={
+                    v:'',
+                    t:'s',
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.nomalLine,
+                    }
+                };
+                workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+_row]={
+                    v:'',
+                    t:'s',
+                    s:{
+                        alignment:cellContentPosition.textCenter,
+                        border:borderStyle.rightBold,
+                    }
+                };
+            }
 
             _zHejiFormula+=excelCellEnglish[zhuijiaCellname+3]+_row+'+';
         }
@@ -1903,7 +1947,9 @@
             }
         };
 
-        _zHejiFormula=_zHejiFormula.substr(0,_zHejiFormula.length-1);
+        _zHejiFormula=_zHejiFormula.substr(0,_zHejiFormula.length-1);//累加的Formula
+        _zHejiFormula="SUM("+excelCellEnglish[zhuijiaCellname+1]+((zhuijiaRowIndex+1)+1)+":"+excelCellEnglish[zhuijiaCellname+1]+((zhuijiaRowIndex+1)+_zLength)+")";
+
         workbook.Sheets.Sheet1[excelCellEnglish[zhuijiaCellname+3]+(zhuijiaRowIndex+1+_zLength+1)]={
             v:'0',
             t:'n',
